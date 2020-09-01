@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+name: Mirror_zPI_$(Date:yyyyMMddHHmmss)
+
+variables:
+- group: PAT
+
+# Mirror on every push
+trigger:
+  branches:
+    include:
+    - '*'
+  batch: true
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+  persistCredentials: true
+- script: |
+    mkdir -p mirror
+    cd mirror
+    git clone --mirror https://$(ADO_PAT)@dev.azure.com/sakamoto-poteko/zWaifu/_git/zPI
+    cd zPI.git
+    git push --mirror https://$(GITHUB_PAT)@github.com/zWaifu/zPI.git || true
+  displayName: 'Mirror repo to GitHub'
+- checkout: self
+  clean: true
