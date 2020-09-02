@@ -17,7 +17,6 @@ find_package(spdlog CONFIG REQUIRED)
 set(zPI_HDR
     IzWaifuEngine.h
     IzWaifuFunctionPlugin.h
-    zWaifuStageManager.h
     )
 
 list(TRANSFORM zPI_HDR PREPEND "include/")
