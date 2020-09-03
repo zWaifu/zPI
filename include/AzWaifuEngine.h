@@ -7,6 +7,8 @@
 #include <QList>
 #include <QString>
 
+#include "zPIGlobals.h"
+
 class QQmlEngine;
 class QQuickItem;
 
@@ -17,18 +19,25 @@ enum class zWaifuMotionPriority {
     PriorityForce = 3
 };
 
-class IzWaifuEngine
+class ZPI_EXPORT AzWaifuEngine : public QObject
 {
+    Q_OBJECT
+
 protected:
-    IzWaifuEngine() = default;
+    AzWaifuEngine() = default;
 
 public:
-    virtual ~IzWaifuEngine() = default;
+    virtual ~AzWaifuEngine() = default;
 
     virtual spdlog::logger* logger() = 0;
 
     virtual QQmlEngine *qmlEngine() = 0;
     virtual QQuickItem *rootElement() = 0;
+
+    virtual QString currentCharacter() = 0;
+    virtual QList<QString> characters() = 0;
+    virtual bool setCharacter(const QString &character) = 0;
+
     virtual QList<QString> expressions() = 0;
     virtual bool setExpression(const QString &expression) = 0;
 
@@ -37,9 +46,9 @@ public:
     virtual bool setMotion(const QString &motionGroup, quint32 id, zWaifuMotionPriority motionPriority) = 0;
 
 signals:
-    virtual void characterChanged(const QString &characterName) = 0;
-    virtual void expressionChanged(const QString &expression) = 0;
-    virtual void motionChanged(const QString &motionGroup, int id) = 0;
+    void characterChanged(const QString &characterName);
+    void expressionChanged(const QString &expression);
+    void motionChanged(const QString &motionGroup, int id);
 };
 
 #endif // IZWAIFUENGINE_H

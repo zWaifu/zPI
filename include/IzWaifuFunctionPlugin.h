@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "zPIGlobals.h"
+
 class IzWaifuEngine;
 
 class IzWaifuFunctionPlugin
