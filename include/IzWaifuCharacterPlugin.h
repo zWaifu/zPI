@@ -2,16 +2,19 @@
 #define IZWAIFUCHARACTERPLUGIN_H
 
 #include <QObject>
+#include <QSharedPointer>
 #include <QString>
 #include <QUuid>
 #include "zPIGlobals.h"
 
-class IzWaifuEngine;
+class AzWaifuEngine;
 
 class ZPI_EXPORT IzWaifuCharacterPlugin
 {
 public:
     virtual ~IzWaifuCharacterPlugin() = default;
+
+    virtual void initialize(QSharedPointer<const AzWaifuEngine> engine) = 0;
 
     /**
      * @brief

@@ -4,14 +4,14 @@
 #include <QObject>
 #include "zPIGlobals.h"
 
-class IzWaifuEngine;
+class AzWaifuEngine;
 
 class ZPI_EXPORT IzWaifuFeaturePlugin
 {
 public:
     virtual ~IzWaifuFeaturePlugin() = default;
 
-    virtual bool initialize(IzWaifuEngine *zWaifuEngine) = 0;
+    virtual bool initialize(AzWaifuEngine *zWaifuEngine) = 0;
 };
 
 #define zWaifuFeaturePluginInterface_iid "moe.poteko.zWaifu.zPI.FeaturePluginInterface"

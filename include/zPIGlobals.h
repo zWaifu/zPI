@@ -2,6 +2,7 @@
 #define ZPIGLOBALS_H
 
 #include <QtCore/qglobal.h>
+#include "QTypesFormatter.h"
 
 #if defined(ZPI_LIBRARY)
 #  define ZPI_EXPORT Q_DECL_EXPORT

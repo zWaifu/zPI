@@ -29,20 +29,20 @@ protected:
 public:
     virtual ~AzWaifuEngine() = default;
 
-    virtual spdlog::logger* logger() = 0;
+    virtual spdlog::logger* logger() const = 0;
 
     virtual QQmlEngine *qmlEngine() = 0;
     virtual QQuickItem *rootElement() = 0;
 
-    virtual QString currentCharacter() = 0;
-    virtual QList<QString> characters() = 0;
+    virtual QString currentCharacter() const = 0;
+    virtual QList<QString> characters() const = 0;
     virtual bool setCharacter(const QString &character) = 0;
 
-    virtual QList<QString> expressions() = 0;
+    virtual QList<QString> expressions() const = 0;
     virtual bool setExpression(const QString &expression) = 0;
 
-    virtual QList<QString> motionGroups() = 0;
-    virtual quint32 motionCount(const QString &motionGroup) = 0;
+    virtual QList<QString> motionGroups() const = 0;
+    virtual quint32 motionCount(const QString &motionGroup) const = 0;
     virtual bool setMotion(const QString &motionGroup, quint32 id, zWaifuMotionPriority motionPriority) = 0;
 
 signals:

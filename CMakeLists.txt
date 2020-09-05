@@ -14,11 +14,11 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 find_package(Qt5 COMPONENTS Widgets Quick REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 
-
 set(zPI_HDR
     AzWaifuEngine.h
     IzWaifuFeaturePlugin.h
     IzWaifuCharacterPlugin.h
+    QTypesFormatter.h
     zPIGlobals.h
     )
 
@@ -30,13 +30,10 @@ set(zPI_SRC
 list(TRANSFORM zPI_HDR PREPEND "include/")
 list(TRANSFORM zPI_SRC PREPEND "src/")
 
-
-include_directories("include")
-
 add_library(zPI SHARED ${zPI_HDR} ${zPI_SRC})
 target_include_directories(zPI PUBLIC "include")
 target_link_libraries(zPI PRIVATE Qt5::Widgets)
-target_link_libraries(zPI PRIVATE spdlog::spdlog)
+target_link_libraries(zPI PUBLIC spdlog::spdlog)
 target_compile_definitions(zPI PRIVATE ZPI_LIBRARY)
 
 add_library(zPI-dev INTERFACE)
