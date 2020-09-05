@@ -17,7 +17,8 @@ find_package(spdlog CONFIG REQUIRED)
 
 set(zPI_HDR
     AzWaifuEngine.h
-    IzWaifuFunctionPlugin.h
+    IzWaifuFeaturePlugin.h
+    IzWaifuCharacterPlugin.h
     zPIGlobals.h
     )
 
@@ -30,3 +31,6 @@ target_include_directories(zPI PRIVATE "include")
 target_link_libraries(zPI PRIVATE Qt5::Widgets)
 target_link_libraries(zPI PRIVATE spdlog::spdlog)
 target_compile_definitions(zPI PRIVATE ZPI_LIBRARY)
+
+add_library(zPI-dev INTERFACE)
+target_include_directories(zPI-dev "include/")
