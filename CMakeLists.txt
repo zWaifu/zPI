@@ -22,15 +22,22 @@ set(zPI_HDR
     zPIGlobals.h
     )
 
+set(zPI_SRC
+    IzWaifuFeaturePlugin.cpp
+    IzWaifuCharacterPlugin.cpp
+    )
+
 list(TRANSFORM zPI_HDR PREPEND "include/")
+list(TRANSFORM zPI_SRC PREPEND "src/")
+
 
 include_directories("include")
 
-add_library(zPI SHARED ${zPI_HDR})
-target_include_directories(zPI PRIVATE "include")
+add_library(zPI SHARED ${zPI_HDR} ${zPI_SRC})
+target_include_directories(zPI PUBLIC "include")
 target_link_libraries(zPI PRIVATE Qt5::Widgets)
 target_link_libraries(zPI PRIVATE spdlog::spdlog)
 target_compile_definitions(zPI PRIVATE ZPI_LIBRARY)
 
 add_library(zPI-dev INTERFACE)
-target_include_directories(zPI-dev "include/")
+target_include_directories(zPI-dev INTERFACE "include/")
