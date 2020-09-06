@@ -41,7 +41,7 @@ public:
      * It may, however, changes in different app instances
      * @return
      */
-    virtual QUuid id() const = 0;
+    virtual QUuid characterId() const = 0;
 };
 
 #define zWaifuCharacterPluginInterface_iid "moe.poteko.zWaifu.zPI.CharacterPluginInterface"

@@ -11,7 +11,7 @@ class ZPI_EXPORT IzWaifuPluginBase
 {
 public:
     virtual ~IzWaifuPluginBase() = default;
-    virtual void initialize(QSharedPointer<const AzWaifuEngine> engine) = 0;
+    virtual void initialize(QSharedPointer<AzWaifuEngine> engine) = 0;
 };
 
 #define zWaifuPluginBaseInterface_iid "moe.poteko.zWaifu.zPI.PluginBaseInterface"
