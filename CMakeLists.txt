@@ -20,6 +20,7 @@ set(zPI_HDR
     IzWaifuCharacterPlugin.h
     QTypesFormatter.h
     zPIGlobals.h
+    IzWaifuPluginBase.h
     )
 
 set(zPI_SRC
